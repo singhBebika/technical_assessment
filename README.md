@@ -1,8 +1,8 @@
 ## Technology used
 
-1. react vite
-2. typescript
-3. husky and eslint
-4. chakra ui
-5. react-query
-6. tanstack table
+1. React Vite
+2. Typescript
+3. Husky and Eslint
+4. Chakra Ui
+5. React Query
+6. Tanstack table
