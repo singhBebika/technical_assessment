@@ -1,5 +1,12 @@
+import MainPage from "./page/MainPage";
+import Provider from "./provider";
+
 function App() {
-  return <></>;
+  return (
+    <Provider>
+      <MainPage />
+    </Provider>
+  );
 }
 
 export default App;
