@@ -1,5 +1,6 @@
 import {Box, Button, Flex, Text, useDisclosure} from "@chakra-ui/react";
 import CustomModal from "@src/components/common/CustomModal";
+import Loader from "@src/components/common/Loader";
 import {useAppDispatch, useAppSelector} from "@src/hooks/redux";
 import {fetchSingleSpell} from "@src/redux/action/spellAction";
 import {useEffect} from "react";
@@ -8,7 +9,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 
 const SpellDescription = () => {
   const navigate = useNavigate();
-  const {singleSpell} = useAppSelector((state) => state.spellDesc);
+  const {singleSpell, isLoading} = useAppSelector((state) => state.spellDesc);
   const {pathname} = useLocation();
   const dispatch = useAppDispatch();
   const {onOpen, isOpen, onClose} = useDisclosure();
@@ -27,13 +28,20 @@ const SpellDescription = () => {
     {label: "Casting Time", value: singleSpell.casting_time},
     {label: "Description", value: singleSpell.desc},
   ];
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <Box m={3}>
       <Flex alignItems={"center"} mb={3} gap={4}>
         <Button leftIcon={<FaAngleLeft />} bg="blue.200" onClick={() => navigate(-1)}>
           Back
         </Button>
-        <Text fontWeight={"semibold"}>{singleSpell.name}'s Description`</Text>
+        <Text fontWeight={"semibold"} color={"blue.500"}>
+          {singleSpell.name}'s Description`
+        </Text>
       </Flex>
       <Box border={"solid 1px"} borderColor={"gray.300"}>
         {formattedData?.map((item, index) => (
@@ -44,9 +52,11 @@ const SpellDescription = () => {
             {item.label === "Description" ? (
               <Box flex={"0.8"}>
                 <Text noOfLines={2}>{singleSpell.desc?.map((itmm) => itmm)}</Text>
-                <Text cursor={"pointer"} color="blue" fontSize={"14px"} onClick={onOpen}>
-                  Read More
-                </Text>
+                {singleSpell.desc && (
+                  <Text cursor={"pointer"} color="blue" fontSize={"14px"} onClick={onOpen}>
+                    Read More
+                  </Text>
+                )}
               </Box>
             ) : (
               <Text flex={"0.8"}>{item.value}</Text>

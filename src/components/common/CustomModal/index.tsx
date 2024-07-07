@@ -21,7 +21,7 @@ const CustomModal = ({modalTitle, isOpen, onClose, children}: IModalProps) => {
     <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader borderBottom={"solid 1px"} borderColor={"gray.300"}>
+        <ModalHeader color={"blue.500"} borderBottom={"solid 1px"} borderColor={"gray.300"}>
           {modalTitle}
         </ModalHeader>
         <ModalCloseButton />

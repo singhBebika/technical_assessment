@@ -1,19 +1,45 @@
 import {Box, HStack, VStack, Text} from "@chakra-ui/react";
+import Loader from "@src/components/common/Loader";
 import {useAppDispatch, useAppSelector} from "@src/hooks/redux";
 import {fetchSpells} from "@src/redux/action/spellAction";
 import {NAVIGATION_ROUTES} from "@src/routes/routes.constants";
-import {useEffect} from "react";
-import {FaEye, FaRegHeart} from "react-icons/fa6";
+import {useEffect, useState} from "react";
+import {FaEye, FaHeart, FaRegHeart} from "react-icons/fa6";
 import {useNavigate} from "react-router-dom";
 
 const SpellList = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const {spells} = useAppSelector((state) => state.spells);
+  const {spells, isLoading} = useAppSelector((state) => state.spells);
+
+  const [favourite, setFavourite] = useState<string[]>([]);
+
+  useEffect(() => {
+    const favouriteList = localStorage.getItem("favourite-list");
+    if (favouriteList) {
+      setFavourite(JSON.parse(favouriteList));
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(fetchSpells({name: ""}));
   }, [dispatch]);
+
+  const onFavourite = (id: string) => {
+    const data = [...favourite, id];
+    setFavourite(data);
+    localStorage.setItem("favourite-list", JSON.stringify(data));
+  };
+
+  const onRemoveFavourite = (id: string) => {
+    const data = favourite.filter((item) => item !== id);
+    setFavourite(data);
+    localStorage.setItem("favourite-list", JSON.stringify(data));
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <VStack
@@ -34,7 +60,7 @@ const SpellList = () => {
         zIndex={1}
         color={"white"}
       >
-        <Box flex="2">
+        <Box flex="3">
           <Text fontWeight="bold">Name</Text>
         </Box>
         <Box flex="1">
@@ -48,18 +74,27 @@ const SpellList = () => {
         </Box>
       </HStack>
       {spells?.results?.map((item, index) => (
-        <HStack key={item.index} gap={0} padding={3} bg={index % 2 === 0 ? "gray.200" : "white"}>
-          <Box flex="2">
+        <HStack key={item.index} gap={1} padding={3} bg={index % 2 === 0 ? "gray.200" : "white"}>
+          <Box flex="3">
             <Text>{item.name}</Text>
           </Box>
           <Box flex="1">
             <Text>{item.level}</Text>
           </Box>
-          <Box flex="1">
-            <FaRegHeart />
+          <Box flex="1" ml={"10px"}>
+            {favourite.includes(item.index) ? (
+              <FaHeart
+                fill="red"
+                cursor={"pointer"}
+                onClick={() => onRemoveFavourite(item.index)}
+              />
+            ) : (
+              <FaRegHeart cursor={"pointer"} onClick={() => onFavourite(item.index)} />
+            )}
           </Box>
           <Box flex="1" ml={"10px"} cursor={"pointer"}>
             <FaEye
+              fill="gray"
               onClick={() => navigate(`${NAVIGATION_ROUTES.SPELL_DESCRIPTION}/${item.index}`)}
             />
           </Box>

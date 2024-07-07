@@ -10,7 +10,7 @@ export interface Spell {
 
 export interface SpellState {
   spells: Spell;
-  loading: boolean;
+  isLoading: boolean;
   error: string | null;
 }
 
@@ -31,6 +31,6 @@ export interface SpellDescription {
 
 export interface SpellDecriptionState {
   singleSpell: SpellDescription;
-  loading: boolean;
+  isLoading: boolean;
   error: string | null;
 }

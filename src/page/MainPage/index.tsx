@@ -19,7 +19,7 @@ const MainPage: React.FC = () => {
   return (
     <Box display={"block"} margin={"0 auto"} maxWidth={"1000px"}>
       <Flex justifyContent={"space-between"} p={3}>
-        <Text fontSize={"24px"} fontWeight={"semibold"}>
+        <Text fontSize={"24px"} fontWeight={"semibold"} color={"blue.600"}>
           Spell List
         </Text>
         <Box>
