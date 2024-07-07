@@ -1,8 +1,11 @@
 const styles = {
   global: {
     body: {
-      backgroundColor: "gray.100",
-      textAlign: "center",
+      backgroundColor: "white",
+      maxWidth: "1500px",
+      display: "block",
+      margin: "0 auto",
+      //   textAlign: "center",
     },
     p: {
       fontWeight: 400,
