@@ -25,7 +25,7 @@ const SpellList = () => {
     if (!spells.results) {
       dispatch(fetchSpells({name: ""}));
     }
-  }, [dispatch]);
+  }, [dispatch, spells]);
 
   const onFavourite = (id: string) => {
     const data = [...favourite, id];

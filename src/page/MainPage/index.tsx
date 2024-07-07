@@ -39,6 +39,7 @@ const MainPage: React.FC = () => {
           </InputGroup>
         </Box>
       </Flex>
+      {/* Add error boundry so that if something went wrong then crash the component only */}
       <ErrorBoundary FallbackComponent={ErrorPage}>
         <SpellList />
       </ErrorBoundary>

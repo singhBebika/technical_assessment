@@ -17,7 +17,7 @@ const SpellDescription = () => {
 
   useEffect(() => {
     dispatch(fetchSingleSpell(id ?? ""));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const formattedData = [
     {label: "Name", value: singleSpell.name},
