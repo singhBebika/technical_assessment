@@ -9,14 +9,14 @@ const SpellList = () => {
   const {spells} = useAppSelector((state) => state.spells);
 
   useEffect(() => {
-    dispatch(fetchSpells());
+    dispatch(fetchSpells({name: ""}));
   }, [dispatch]);
 
   return (
     <VStack
       align="stretch"
       gap={0}
-      height={"85vh"}
+      maxHeight={"85vh"}
       overflowY={"scroll"}
       border={"solid 1px"}
       borderColor={"gray.200"}
