@@ -4,14 +4,17 @@
 echo ""
 echo "linting your code"
 echo "----please wait-----"
-
 npx lint-staged
-
 echo "Linted Successfully!"
+
+echo ""
+echo "testing your code"
+echo "----please wait-----"
+pnpm test
+echo "Test Passed Successfully!"
 
 echo ""
 echo "building your code"
 echo "----please wait-----"
-
 pnpm build
 echo "Build Successfully!"
