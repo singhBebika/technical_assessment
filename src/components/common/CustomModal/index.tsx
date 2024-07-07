@@ -28,7 +28,7 @@ const CustomModal = ({modalTitle, isOpen, onClose, children}: IModalProps) => {
         <ModalBody>{children}</ModalBody>
 
         <ModalFooter borderTop={"solid 1px"} borderColor={"gray.300"}>
-          <Button colorScheme="gray" mr={3} onClick={onClose}>
+          <Button colorScheme="gray" color={"gray.700"} mr={3} onClick={onClose}>
             Close
           </Button>
         </ModalFooter>

@@ -22,7 +22,9 @@ const SpellList = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchSpells({name: ""}));
+    if (!spells.results) {
+      dispatch(fetchSpells({name: ""}));
+    }
   }, [dispatch]);
 
   const onFavourite = (id: string) => {

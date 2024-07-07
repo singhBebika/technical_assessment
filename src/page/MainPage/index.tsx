@@ -5,6 +5,8 @@ import {Box, Flex, Input, InputGroup, InputRightAddon, Text} from "@chakra-ui/re
 import {FaSearch} from "react-icons/fa";
 import {useAppDispatch} from "@src/hooks/redux";
 import {fetchSpells} from "@src/redux/action/spellAction";
+import {ErrorBoundary} from "react-error-boundary";
+import ErrorPage from "@src/components/ErrorPage";
 
 const MainPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -32,12 +34,14 @@ const MainPage: React.FC = () => {
               onKeyDown={handleSearch}
             />
             <InputRightAddon bg={"blue.300"}>
-              <FaSearch />
+              <FaSearch color="white" />
             </InputRightAddon>
           </InputGroup>
         </Box>
       </Flex>
-      <SpellList />
+      <ErrorBoundary FallbackComponent={ErrorPage}>
+        <SpellList />
+      </ErrorBoundary>
     </Box>
   );
 };

@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   argTypes: {
     variant: {
-      options: ["solid", "outline", "testing"],
+      options: ["solid", "outline"],
       control: {type: "radio"},
     },
     disabled: {control: {type: "boolean"}},
@@ -48,7 +48,6 @@ export const Primary: Story = {
     width: "80px",
     borderRadius: 2,
     onClick: fn(),
-    // leftIcon: <EmailIcon />,
   },
-  render: (argTypes) => <Button {...argTypes}>Hello</Button>,
+  render: (argTypes) => <Button {...argTypes}>Button</Button>,
 };
