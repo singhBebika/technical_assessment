@@ -1,7 +1,7 @@
 // src/spellSlice.ts
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Spell, SpellState} from "../interface";
-import {fetchSpells} from "../action/spellListAction";
+import {fetchSpells} from "../action/spellAction";
 
 const initialState: SpellState = {
   spells: {},

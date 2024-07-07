@@ -17,7 +17,9 @@
     "paths": {
       "@src/components/*": ["components/*"],
       "@src/redux/*": ["redux/*"],
-      "@src/hooks/*": ["hooks/*"]
+      "@src/hooks/*": ["hooks/*"],
+      "@src/routes/*": ["routes/*"],
+      "@src/page/*": ["page/*"]
     },
     /* Linting */
     "strict": true,

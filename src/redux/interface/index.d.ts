@@ -13,3 +13,24 @@ export interface SpellState {
   loading: boolean;
   error: string | null;
 }
+
+export interface SpellDescription {
+  name?: string;
+  desc?: string[];
+  higher_level?: string[];
+  range?: string;
+  components?: string[];
+  material?: string;
+  ritual?: boolean;
+  duration?: string;
+  concentration?: boolean;
+  casting_time?: string;
+  level?: number;
+  attack_type?: string;
+}
+
+export interface SpellDecriptionState {
+  singleSpell: SpellDescription;
+  loading: boolean;
+  error: string | null;
+}

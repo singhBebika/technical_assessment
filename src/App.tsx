@@ -1,10 +1,10 @@
-import MainPage from "./page/MainPage";
 import Provider from "./provider";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <Provider>
-      <MainPage />
+      <AppRoutes />
     </Provider>
   );
 }

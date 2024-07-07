@@ -1,10 +1,13 @@
 import {Box, HStack, VStack, Text} from "@chakra-ui/react";
 import {useAppDispatch, useAppSelector} from "@src/hooks/redux";
-import {fetchSpells} from "@src/redux/action/spellListAction";
+import {fetchSpells} from "@src/redux/action/spellAction";
+import {NAVIGATION_ROUTES} from "@src/routes/routes.constants";
 import {useEffect} from "react";
-import {FaRegHeart} from "react-icons/fa6";
+import {FaEye, FaRegHeart} from "react-icons/fa6";
+import {useNavigate} from "react-router-dom";
 
 const SpellList = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const {spells} = useAppSelector((state) => state.spells);
 
@@ -40,6 +43,9 @@ const SpellList = () => {
         <Box flex="1">
           <Text fontWeight="bold">Favourite</Text>
         </Box>
+        <Box flex="1">
+          <Text fontWeight="bold">Action</Text>
+        </Box>
       </HStack>
       {spells?.results?.map((item, index) => (
         <HStack key={item.index} gap={0} padding={3} bg={index % 2 === 0 ? "gray.200" : "white"}>
@@ -51,6 +57,11 @@ const SpellList = () => {
           </Box>
           <Box flex="1">
             <FaRegHeart />
+          </Box>
+          <Box flex="1" ml={"10px"} cursor={"pointer"}>
+            <FaEye
+              onClick={() => navigate(`${NAVIGATION_ROUTES.SPELL_DESCRIPTION}/${item.index}`)}
+            />
           </Box>
         </HStack>
       ))}

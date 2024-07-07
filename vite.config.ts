@@ -11,6 +11,8 @@ export default defineConfig({
       "@src/components": path.resolve("src/components"),
       "@src/redux": path.resolve("src/redux"),
       "@src/hooks": path.resolve("src/hooks"),
+      "@src/routes": path.resolve("src/routes"),
+      "@src/page": path.resolve("src/page"),
     },
   },
 });

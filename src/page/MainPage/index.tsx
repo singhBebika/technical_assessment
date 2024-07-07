@@ -4,7 +4,7 @@ import SpellList from "@src/components/templates/SpellList";
 import {Box, Flex, Input, InputGroup, InputRightAddon, Text} from "@chakra-ui/react";
 import {FaSearch} from "react-icons/fa";
 import {useAppDispatch} from "@src/hooks/redux";
-import {fetchSpells} from "@src/redux/action/spellListAction";
+import {fetchSpells} from "@src/redux/action/spellAction";
 
 const MainPage: React.FC = () => {
   const dispatch = useAppDispatch();
